@@ -2,8 +2,8 @@
 <html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BGTRADE | Стройматериалы оптом в Казахстане</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BGTRADE | Стройматериалы оптом</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -17,294 +17,357 @@
                     fontFamily: { sans: ['Manrope', 'sans-serif'] },
                     colors: { 
                         brand: {
-                            blue: '#0f172a',    // Темно-синий (Основа)
-                            light: '#f1f5f9',   // Светлый фон
-                            orange: '#f97316',  // Акцент (Стройка)
-                            gray: '#64748b'     // Текст
+                            blue: '#0f172a',    // Темно-синий
+                            dark: '#020617',    // Почти черный
+                            orange: '#f97316',  // Оранжевый акцент
+                            gray: '#64748b',
+                            light: '#f8fafc'
                         }
+                    },
+                    boxShadow: {
+                        'glow': '0 0 20px rgba(249, 115, 22, 0.3)'
                     }
                 }
             }
         }
     </script>
-</head>
-<body class="bg-white text-brand-blue font-sans antialiased overflow-x-hidden">
 
-    <div class="bg-brand-blue text-slate-400 text-xs py-2 border-b border-white/10 hidden md:block">
-        <div class="container mx-auto px-6 flex justify-between">
-            <div class="flex gap-6">
-                <span><i class="fas fa-map-marker-alt mr-2 text-brand-orange"></i> Алматы, ул. Строительная 12</span>
-                <span><i class="far fa-clock mr-2 text-brand-orange"></i> Пн-Пт: 09:00 - 18:00</span>
-            </div>
+    <style>
+        /* Фикс горизонтального скролла */
+        html, body { overflow-x: hidden; }
+        
+        /* Плейсхолдер для фото (Серый блок) */
+        .img-placeholder {
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-weight: bold;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        .group:hover .img-placeholder {
+            background-color: #cbd5e1;
+            border-color: #94a3b8;
+        }
+
+        /* Мобильное меню */
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
+        .menu-closed { transform: translateX(100%); }
+        .menu-open { transform: translateX(0); }
+    </style>
+</head>
+<body class="bg-brand-light text-brand-blue font-sans antialiased">
+
+    <div class="bg-brand-blue text-slate-400 text-[10px] md:text-xs py-2 border-b border-white/10">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
             <div class="flex gap-4">
-                <a href="#" class="hover:text-white transition">info@bgtrade.kz</a>
+                <span><i class="fas fa-map-marker-alt text-brand-orange mr-1"></i> Алматы</span>
+                <span class="hidden sm:inline"><i class="far fa-clock text-brand-orange mr-1"></i> Пн-Пт: 09:00 - 18:00</span>
             </div>
+            <a href="mailto:info@bgtrade.kz" class="hover:text-white transition">info@bgtrade.kz</a>
         </div>
     </div>
 
-    <header class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur shadow-sm border-b border-slate-100">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-extrabold tracking-tight flex items-center gap-2">
-                <div class="w-10 h-10 bg-brand-orange rounded-lg flex items-center justify-center text-white">
+    <header class="sticky top-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200">
+        <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+            
+            <a href="#" class="text-xl md:text-2xl font-extrabold tracking-tight flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-brand-orange rounded-lg flex items-center justify-center text-white shadow-glow group-hover:scale-105 transition">
                     <i class="fas fa-cubes"></i>
                 </div>
                 <div>BG<span class="text-brand-orange">TRADE</span></div>
             </a>
 
             <nav class="hidden md:flex gap-8 font-semibold text-sm text-slate-600">
-                <a href="#catalog" class="hover:text-brand-orange transition">Каталог</a>
-                <a href="#about" class="hover:text-brand-orange transition">О компании</a>
-                <a href="#partners" class="hover:text-brand-orange transition">Партнеры</a>
-                <a href="#contacts" class="hover:text-brand-orange transition">Контакты</a>
+                <a href="#catalog" class="hover:text-brand-orange hover:scale-105 transition">Каталог</a>
+                <a href="#about" class="hover:text-brand-orange hover:scale-105 transition">О нас</a>
+                <a href="#contacts" class="hover:text-brand-orange hover:scale-105 transition">Контакты</a>
             </nav>
 
             <div class="hidden md:block">
-                <a href="#contacts" class="bg-brand-blue text-white px-6 py-3 rounded-lg font-bold text-sm hover:bg-slate-800 transition shadow-lg shadow-brand-blue/20">
+                <a href="#contacts" class="bg-brand-blue text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-slate-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     Скачать Прайс
                 </a>
             </div>
 
-            <button class="md:hidden text-2xl text-brand-blue"><i class="fas fa-bars"></i></button>
+            <button id="menu-btn" class="md:hidden text-2xl text-brand-blue focus:outline-none p-2">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <section class="relative pt-20 pb-32 overflow-hidden bg-brand-blue">
-        <div class="absolute inset-0 opacity-20">
-            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover">
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-white flex flex-col items-center justify-center gap-8 menu-closed md:hidden">
+        <a href="#catalog" class="mobile-link text-2xl font-bold text-brand-blue hover:text-brand-orange transition">Каталог</a>
+        <a href="#about" class="mobile-link text-2xl font-bold text-brand-blue hover:text-brand-orange transition">О компании</a>
+        <a href="#contacts" class="mobile-link text-2xl font-bold text-brand-blue hover:text-brand-orange transition">Контакты</a>
+        <a href="https://wa.me/77074534518" class="bg-brand-orange text-white px-8 py-3 rounded-full font-bold shadow-glow">Написать в WhatsApp</a>
+    </div>
+        <section class="relative pt-12 pb-20 md:pt-24 md:pb-32 overflow-hidden bg-brand-blue">
+        <div class="absolute inset-0 opacity-10">
+            <div class="w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         </div>
         
-        <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+        <div class="container mx-auto px-4 md:px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
-                <div class="inline-block bg-brand-orange/10 text-brand-orange px-3 py-1 rounded text-xs font-bold mb-6 tracking-widest uppercase">
+                <div class="inline-block bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-3 py-1 rounded text-[10px] md:text-xs font-bold mb-6 tracking-widest uppercase animate-pulse">
                     Надежный поставщик с 2010 года
                 </div>
-                <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-6">
                     Стройматериалы <br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-yellow-400">оптом и в розницу</span>
                 </h1>
-                <p class="text-lg text-slate-400 mb-8 max-w-lg">
-                    Комплексное снабжение строительных объектов. От фундамента до кровли. Доставка по всему Казахстану за 3 дня.
+                <p class="text-base md:text-lg text-slate-400 mb-8 max-w-lg leading-relaxed">
+                    Комплексное снабжение объектов. От фундамента до кровли. Доставка по всему Казахстану точно в срок.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#catalog" class="bg-brand-orange text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-orange-600 transition shadow-lg shadow-orange-500/30">
+                    <a href="#catalog" class="bg-brand-orange text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-orange-600 transition shadow-glow transform hover:-translate-y-1">
                         Перейти в каталог
                     </a>
-                    <a href="https://wa.me/77074534518" class="bg-white/10 text-white backdrop-blur border border-white/20 px-8 py-4 rounded-xl font-bold text-center hover:bg-white hover:text-brand-blue transition">
-                        Написать менеджеру
+                    <a href="https://wa.me/77074534518" class="bg-white/5 text-white backdrop-blur border border-white/10 px-8 py-4 rounded-xl font-bold text-center hover:bg-white hover:text-brand-blue transition">
+                        Связаться с нами
                     </a>
                 </div>
             </div>
-            <div class="relative hidden md:block" data-aos="fade-left">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white/5 backdrop-blur p-6 rounded-2xl border border-white/10">
-                        <div class="text-3xl font-bold text-white mb-1">5000+</div>
-                        <div class="text-sm text-slate-400">Товаров на складе</div>
-                    </div>
-                    <div class="bg-brand-orange p-6 rounded-2xl text-white transform translate-y-8">
+            
+            <div class="relative hidden md:grid grid-cols-2 gap-4" data-aos="fade-left">
+                <div class="space-y-4 mt-8">
+                    <div class="img-placeholder h-48 rounded-2xl bg-white/5 border-white/10">PHOTO 1</div>
+                    <div class="bg-brand-orange p-6 rounded-2xl text-white shadow-glow">
                         <div class="text-3xl font-bold mb-1">24/7</div>
-                        <div class="text-sm opacity-90">Отгрузка товара</div>
+                        <div class="text-sm opacity-90">Прием заявок</div>
                     </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-white/10 backdrop-blur p-6 rounded-2xl border border-white/10">
+                        <div class="text-3xl font-bold text-white mb-1">5k+</div>
+                        <div class="text-sm text-slate-400">Товаров в наличии</div>
+                    </div>
+                    <div class="img-placeholder h-64 rounded-2xl bg-white/5 border-white/10">PHOTO 2</div>
                 </div>
             </div>
         </div>
     </section>
-        <section id="catalog" class="py-24 bg-brand-light">
-        <div class="container mx-auto px-6">
+
+    <section id="catalog" class="py-20 bg-brand-light">
+        <div class="container mx-auto px-4 md:px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-brand-blue mb-4">Наш ассортимент</h2>
-                <p class="text-brand-gray">Только сертифицированная продукция от заводов-производителей</p>
+                <div class="h-1 w-20 bg-brand-orange mx-auto rounded-full"></div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <a href="#" class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-                    <div class="h-40 bg-slate-100 rounded-xl mb-4 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1628135800473-b3c07621c430?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="#contacts" class="group bg-white p-4 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 border border-slate-100">
+                    <div class="img-placeholder h-48 rounded-xl mb-4 w-full">ИЗОЛЯЦИЯ</div>
+                    <div class="px-2 pb-2">
+                        <h3 class="font-bold text-lg mb-1 text-brand-blue group-hover:text-brand-orange transition">Изоляция</h3>
+                        <p class="text-xs text-brand-gray">Минвата, Пеноплекс</p>
                     </div>
-                    <h3 class="font-bold text-lg mb-1 group-hover:text-brand-orange transition">Изоляция</h3>
-                    <p class="text-xs text-brand-gray">Минвата, Пеноплекс</p>
                 </a>
                 
-                <a href="#" class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-                    <div class="h-40 bg-slate-100 rounded-xl mb-4 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <a href="#contacts" class="group bg-white p-4 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 border border-slate-100">
+                    <div class="img-placeholder h-48 rounded-xl mb-4 w-full">КРОВЛЯ</div>
+                    <div class="px-2 pb-2">
+                        <h3 class="font-bold text-lg mb-1 text-brand-blue group-hover:text-brand-orange transition">Кровля</h3>
+                        <p class="text-xs text-brand-gray">Черепица, Профнастил</p>
                     </div>
-                    <h3 class="font-bold text-lg mb-1 group-hover:text-brand-orange transition">Кровля</h3>
-                    <p class="text-xs text-brand-gray">Черепица, Профнастил</p>
                 </a>
 
-                <a href="#" class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-                    <div class="h-40 bg-slate-100 rounded-xl mb-4 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1594916868842-834c26a63529?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <a href="#contacts" class="group bg-white p-4 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 border border-slate-100">
+                    <div class="img-placeholder h-48 rounded-xl mb-4 w-full">ФАСАДЫ</div>
+                    <div class="px-2 pb-2">
+                        <h3 class="font-bold text-lg mb-1 text-brand-blue group-hover:text-brand-orange transition">Фасады</h3>
+                        <p class="text-xs text-brand-gray">Сайдинг, Панели</p>
                     </div>
-                    <h3 class="font-bold text-lg mb-1 group-hover:text-brand-orange transition">Фасады</h3>
-                    <p class="text-xs text-brand-gray">Сайдинг, Панели</p>
                 </a>
 
-                <a href="#" class="group bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
-                    <div class="h-40 bg-slate-100 rounded-xl mb-4 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <a href="#contacts" class="group bg-white p-4 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300 border border-slate-100">
+                    <div class="img-placeholder h-48 rounded-xl mb-4 w-full">СМЕСИ</div>
+                    <div class="px-2 pb-2">
+                        <h3 class="font-bold text-lg mb-1 text-brand-blue group-hover:text-brand-orange transition">Сухие смеси</h3>
+                        <p class="text-xs text-brand-gray">Цемент, Штукатурка</p>
                     </div>
-                    <h3 class="font-bold text-lg mb-1 group-hover:text-brand-orange transition">Сухие смеси</h3>
-                    <p class="text-xs text-brand-gray">Цемент, Штукатурка</p>
                 </a>
             </div>
-
+            
             <div class="mt-12 text-center">
-                <a href="#" class="inline-flex items-center gap-2 text-brand-blue font-bold border-b-2 border-brand-orange pb-1 hover:text-brand-orange transition">
-                    Смотреть весь каталог <i class="fas fa-arrow-right text-xs"></i>
+                <a href="#contacts" class="inline-block border-2 border-brand-blue text-brand-blue font-bold py-3 px-8 rounded-full hover:bg-brand-blue hover:text-white transition">
+                    Скачать полный каталог
                 </a>
             </div>
         </div>
     </section>
-
-    <section id="about" class="py-24 bg-white relative overflow-hidden">
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
+        <section id="about" class="py-20 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-6">Почему строители выбирают <span class="text-brand-orange">BGTRADE</span>?</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-6">Почему <span class="text-brand-orange">BGTRADE</span>?</h2>
                     <p class="text-brand-gray mb-8 leading-relaxed">
-                        Мы понимаем, что простой стройки стоит денег. Поэтому наша логистика работает как часы, а менеджеры на связи 24/7.
+                        Мы понимаем, что каждый день простоя на стройке — это убытки. Поэтому мы построили логистику так, чтобы вы получали материал вовремя.
                     </p>
                     
                     <div class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-brand-blue text-xl"><i class="fas fa-truck"></i></div>
+                        <div class="flex gap-4 p-4 rounded-xl hover:bg-slate-50 transition">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-brand-blue text-xl shrink-0"><i class="fas fa-truck"></i></div>
                             <div>
-                                <h4 class="font-bold text-lg">Собственный автопарк</h4>
+                                <h4 class="font-bold text-lg text-brand-blue">Собственная логистика</h4>
                                 <p class="text-sm text-brand-gray">Доставка до объекта точно в срок, без посредников.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-brand-orange text-xl"><i class="fas fa-percentage"></i></div>
+                        <div class="flex gap-4 p-4 rounded-xl hover:bg-slate-50 transition">
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-brand-orange text-xl shrink-0"><i class="fas fa-tags"></i></div>
                             <div>
-                                <h4 class="font-bold text-lg">Оптовые цены</h4>
-                                <p class="text-sm text-brand-gray">Прямые контракты с заводами дают нам лучшие цены на рынке.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-green-600 text-xl"><i class="fas fa-file-invoice"></i></div>
-                            <div>
-                                <h4 class="font-bold text-lg">Полный пакет документов</h4>
-                                <p class="text-sm text-brand-gray">НДС, сертификаты качества, паспорта на продукцию.</p>
+                                <h4 class="font-bold text-lg text-brand-blue">Оптовые цены</h4>
+                                <p class="text-sm text-brand-gray">Прямые контракты с заводами = лучшая цена для вас.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="relative" data-aos="fade-left">
-                    <div class="absolute -inset-4 bg-brand-orange/20 rounded-3xl transform rotate-3"></div>
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1000&auto=format&fit=crop" class="relative rounded-3xl shadow-2xl w-full">
-                </div>
-            </div>
-        </div>
-    </section>
-        <section id="contacts" class="py-24 bg-brand-blue relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-800/50 transform skew-x-12"></div>
-        
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="bg-brand-orange rounded-3xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2 text-white">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Нужен расчет сметы?</h2>
-                    <p class="text-white/90 mb-8 text-lg">
-                        Оставьте заявку, и мы подготовим коммерческое предложение с персональной скидкой в течение 30 минут.
-                    </p>
-                    <div class="flex gap-4">
-                        <div class="flex items-center gap-2"><i class="fas fa-check-circle"></i> Бесплатный расчет</div>
-                        <div class="flex items-center gap-2"><i class="fas fa-check-circle"></i> Прайс-лист PDF</div>
+                
+                <div class="relative h-80 md:h-96" data-aos="fade-left">
+                    <div class="absolute inset-0 bg-brand-orange/10 rounded-3xl transform rotate-3"></div>
+                    <div class="img-placeholder absolute inset-0 bg-slate-200 rounded-3xl shadow-xl w-full h-full text-2xl">
+                        ФОТО СКЛАДА / ОФИСА
                     </div>
-                </div>
-                <div class="md:w-1/2 w-full bg-white p-8 rounded-2xl shadow-lg">
-                    <form class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-bold text-brand-blue mb-1">Ваше имя</label>
-                            <input type="text" placeholder="Иван Иванов" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-200 outline-none transition">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-brand-blue mb-1">Телефон</label>
-                            <input type="tel" placeholder="+7 (___) ___-__-__" class="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-200 outline-none transition">
-                        </div>
-                        <button class="w-full bg-brand-blue text-white font-bold py-4 rounded-lg hover:bg-slate-800 transition shadow-lg">
-                            Получить расчет
-                        </button>
-                        <p class="text-xs text-center text-slate-400">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
-                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white border-t border-slate-100 pt-16 pb-8">
-        <div class="container mx-auto px-6">
+    <section id="contacts" class="py-20 bg-brand-blue relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-2/3 h-full bg-white/5 skew-x-12"></div>
+        
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="bg-white rounded-3xl p-6 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-12">
+                
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-blue mb-4">Оставьте заявку</h2>
+                    <p class="text-slate-500 mb-8 text-lg">
+                        Наши менеджеры свяжутся с вами в течение 15 минут и подготовят коммерческое предложение.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-brand-blue font-bold">
+                            <i class="fas fa-phone-alt text-brand-orange"></i> +7 (707) 123-45-67
+                        </div>
+                        <div class="flex items-center gap-3 text-brand-blue font-bold">
+                            <i class="fas fa-envelope text-brand-orange"></i> info@bgtrade.kz
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-1/2 w-full">
+                    <form class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Ваше имя" class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-100 outline-none transition font-semibold text-brand-blue">
+                        </div>
+                        <div>
+                            <input type="tel" placeholder="Номер телефона" class="w-full px-5 py-4 rounded-xl bg-slate-50 border border-slate-200 focus:border-brand-orange focus:ring-2 focus:ring-orange-100 outline-none transition font-semibold text-brand-blue">
+                        </div>
+                        <button class="w-full bg-brand-orange text-white font-bold py-4 rounded-xl hover:bg-orange-600 transition shadow-lg transform active:scale-95">
+                            Получить расчет сметы
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+        <footer class="bg-brand-dark text-slate-400 border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-4 md:px-6">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
+                
                 <div>
-                    <a href="#" class="text-2xl font-extrabold tracking-tight flex items-center gap-2 mb-6 text-brand-blue">
-                        <div class="w-8 h-8 bg-brand-orange rounded-lg flex items-center justify-center text-white text-sm">
+                    <a href="#" class="text-2xl font-extrabold text-white flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-brand-orange rounded-lg flex items-center justify-center text-sm">
                             <i class="fas fa-cubes"></i>
                         </div>
                         BGTRADE
                     </a>
-                    <p class="text-sm text-slate-500 mb-6">
-                        Ваш надежный партнер в мире строительства. Оптовые поставки материалов по всему Казахстану.
+                    <p class="text-sm mb-6 opacity-70">
+                        Оптовые поставки строительных материалов по всему Казахстану. Надежность, проверенная временем.
                     </p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-brand-orange hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:bg-green-500 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
-                    </div>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold text-brand-blue mb-6">Каталог</h4>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li><a href="#" class="hover:text-brand-orange transition">Теплоизоляция</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Кровельные материалы</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Фасадные системы</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Сухие смеси</a></li>
+                    <h4 class="font-bold text-white mb-6">Навигация</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#catalog" class="hover:text-brand-orange transition">Каталог товаров</a></li>
+                        <li><a href="#about" class="hover:text-brand-orange transition">О компании</a></li>
+                        <li><a href="#contacts" class="hover:text-brand-orange transition">Прайс-лист</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-brand-blue mb-6">Компания</h4>
-                    <ul class="space-y-3 text-sm text-slate-500">
-                        <li><a href="#" class="hover:text-brand-orange transition">О нас</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Доставка</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Оплата</a></li>
-                        <li><a href="#" class="hover:text-brand-orange transition">Контакты</a></li>
+                    <h4 class="font-bold text-white mb-6">Контакты</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li>Алматы, ул. Строительная 12</li>
+                        <li>+7 (707) 123-45-67</li>
+                        <li>info@bgtrade.kz</li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-brand-blue mb-6">Контакты</h4>
-                    <ul class="space-y-4 text-sm text-slate-500">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-phone mt-1 text-brand-orange"></i>
-                            <div>
-                                <div class="font-bold text-brand-blue">+7 (707) 123-45-67</div>
-                                <div class="text-xs">Ежедневно 09:00-18:00</div>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-envelope mt-1 text-brand-orange"></i>
-                            <span>info@bgtrade.kz</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-map-marker-alt mt-1 text-brand-orange"></i>
-                            <span>г. Алматы, ул. Строительная 12, офис 304</span>
-                        </li>
-                    </ul>
+                    <h4 class="font-bold text-white mb-6">Мы в соцсетях</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-orange hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-green-500 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
             </div>
 
-            <div class="border-t border-slate-100 pt-8 text-center text-xs text-slate-400">
-                &copy; 2026 BGTRADE. Все права защищены. Разработано AnukennWell.
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-50 gap-4">
+                <p>&copy; 2026 BGTRADE. Все права защищены.</p>
+                <a href="https://anukenn.vercel.app/" target="_blank" class="flex items-center gap-2 hover:text-white transition group">
+                    Разработчик сайта - 
+                    <span class="bg-white/10 px-2 py-1 rounded text-white group-hover:bg-brand-orange transition font-bold">Anuken</span>
+                </a>
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Запуск анимаций
         AOS.init({
             once: true,
             duration: 800,
             offset: 50
+        });
+
+        // ЛОГИКА МЕНЮ (Гамбургер)
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        // Открытие/Закрытие по кнопке
+        if(menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('menu-closed');
+                    mobileMenu.classList.add('menu-open');
+                    menuBtn.innerHTML = '<i class="fas fa-times"></i>'; // Крестик
+                } else {
+                    mobileMenu.classList.remove('menu-open');
+                    mobileMenu.classList.add('menu-closed');
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>'; // Бургер
+                }
+            });
+        }
+
+        // Закрытие при клике на ссылку
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('menu-open');
+                mobileMenu.classList.add('menu-closed');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                isMenuOpen = false;
+            });
         });
     </script>
 </body>

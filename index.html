@@ -16,13 +16,12 @@
                 extend: {
                     fontFamily: { sans: ['Manrope', 'sans-serif'], display: ['Exo 2', 'sans-serif'] },
                     colors: { 
-                        dark: '#0B1121',       // Глубокий премиум-черный
-                        primary: '#1e293b',    // Темно-синий (карточки)
-                        accent: '#F97316',     // Строительный Оранжевый
+                        dark: '#0B1121',       
+                        primary: '#1e293b',    
+                        accent: '#F97316',     
                         accentHover: '#ea580c'
                     },
                     animation: {
-                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite'
                     },
                     keyframes: {
@@ -36,52 +35,33 @@
     <style>
         body { background-color: #0B1121; color: #e2e8f0; overflow-x: hidden; }
         
-        /* Текстура сетки на фоне */
         .grid-pattern {
             background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
         }
 
-        /* Стекло */
         .glass {
-            background: rgba(30, 41, 59, 0.4);
+            background: rgba(30, 41, 59, 0.6); /* Чуть темнее для контраста */
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Оранжевое свечение при наведении */
-        .hover-glow:hover {
-            box-shadow: 0 0 25px rgba(249, 115, 22, 0.4);
-            border-color: rgba(249, 115, 22, 0.5);
+        /* Активная вкладка (таб) */
+        .tab-active {
+            color: #F97316 !important;
+            border-bottom: 2px solid #F97316;
         }
 
-        /* Кнопки связи (пульсация) */
+        /* Кнопки связи (Статичные) */
         .hot-btn {
-            position: fixed;
-            z-index: 100;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background-color 0.2s;
         }
-        .hot-btn:hover { transform: scale(1.1); }
-        .hot-pulse::before {
-            content: '';
-            position: absolute;
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            background: inherit;
-            opacity: 0.6;
-            z-index: -1;
-            animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-        @keyframes ping {
-            75%, 100% { transform: scale(2); opacity: 0; }
-        }
+        .hot-btn:active { transform: scale(0.95); }
         
         /* Мобильное меню */
         #mobile-menu { transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -89,28 +69,28 @@
         .menu-visible { transform: translateX(0); opacity: 1; }
     </style>
 </head>
-<body class="relative">
+<body class="relative font-sans">
 
-    <div class="fixed bottom-6 right-6 z-[100] flex flex-col gap-4">
-        <a href="https://wa.me/77074534518" class="hot-btn w-14 h-14 bg-green-500 text-white text-2xl hot-pulse">
+    <div class="fixed bottom-6 right-6 z-[100] flex flex-col gap-3">
+        <a href="https://wa.me/77074534518" class="hot-btn w-12 h-12 rounded-full bg-green-600 hover:bg-green-500 text-white text-2xl">
             <i class="fab fa-whatsapp"></i>
         </a>
-        <a href="tel:+77074534518" class="hot-btn w-14 h-14 bg-accent text-white text-2xl hot-pulse animation-delay-500">
-            <i class="fas fa-phone-alt animate-tada"></i>
+        <a href="tel:+77074534518" class="hot-btn w-12 h-12 rounded-full bg-accent hover:bg-accentHover text-white text-xl">
+            <i class="fas fa-phone-alt"></i>
         </a>
     </div>
 
     <div class="fixed inset-0 pointer-events-none z-0">
         <div class="absolute inset-0 grid-pattern"></div>
-        <div class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px] animate-pulse"></div>
-        <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+        <div class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-accent/5 rounded-full blur-[150px]"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[150px]"></div>
     </div>
 
     <header class="fixed top-0 w-full z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
         <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
             
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 bg-gradient-to-br from-accent to-orange-600 rounded-lg flex items-center justify-center text-white shadow-[0_0_15px_rgba(249,115,22,0.5)] group-hover:rotate-12 transition duration-300">
+                <div class="w-10 h-10 bg-gradient-to-br from-accent to-orange-600 rounded-lg flex items-center justify-center text-white shadow-lg">
                     <i class="fas fa-cube text-lg"></i>
                 </div>
                 <div class="font-display font-black text-2xl tracking-tight text-white">
@@ -119,17 +99,14 @@
             </a>
 
             <nav class="hidden md:flex gap-8 font-medium text-sm text-slate-300">
-                <a href="#catalog" class="hover:text-white hover:shadow-[0_2px_0_#F97316] transition-all pb-1">Каталог</a>
-                <a href="#about" class="hover:text-white hover:shadow-[0_2px_0_#F97316] transition-all pb-1">Почему мы</a>
-                <a href="#partners" class="hover:text-white hover:shadow-[0_2px_0_#F97316] transition-all pb-1">Партнеры</a>
+                <a href="#catalog" class="hover:text-white transition-all pb-1">Каталог</a>
+                <a href="#product-demo" class="hover:text-white transition-all pb-1">Продукция</a>
+                <a href="#about" class="hover:text-white transition-all pb-1">Почему мы</a>
             </nav>
 
             <div class="hidden md:block">
-                <a href="#contacts" class="group relative px-6 py-2.5 bg-white/5 border border-white/10 rounded-lg overflow-hidden transition-all hover:border-accent/50">
-                    <div class="absolute inset-0 w-0 bg-accent transition-all duration-[250ms] ease-out group-hover:w-full opacity-10"></div>
-                    <span class="relative font-bold text-white group-hover:text-accent transition-colors flex items-center gap-2">
-                        <i class="far fa-comment-dots"></i> Получить консультацию
-                    </span>
+                <a href="#contacts" class="px-6 py-2.5 bg-accent hover:bg-accentHover text-white rounded-lg font-bold transition shadow-lg text-sm">
+                    Получить консультацию
                 </a>
             </div>
 
@@ -139,116 +116,118 @@
         </div>
     </header>
 
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-dark/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 menu-hidden md:hidden">
-        <a href="#catalog" class="mobile-link text-3xl font-display font-bold text-white hover:text-accent transition">Каталог</a>
-        <a href="#about" class="mobile-link text-3xl font-display font-bold text-white hover:text-accent transition">О компании</a>
-        <a href="#contacts" class="mobile-link text-3xl font-display font-bold text-white hover:text-accent transition">Контакты</a>
-        <a href="tel:+77074534518" class="bg-accent text-white px-8 py-3 rounded-full font-bold shadow-[0_0_20px_rgba(249,115,22,0.4)] animate-pulse">Позвонить сейчас</a>
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-dark/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 menu-hidden md:hidden">
+        <a href="#catalog" class="mobile-link text-2xl font-display font-bold text-white hover:text-accent transition">Каталог</a>
+        <a href="#product-demo" class="mobile-link text-2xl font-display font-bold text-white hover:text-accent transition">Продукция</a>
+        <a href="#contacts" class="mobile-link text-2xl font-display font-bold text-white hover:text-accent transition">Контакты</a>
+        <a href="tel:+77074534518" class="bg-accent text-white px-8 py-3 rounded-full font-bold">Позвонить</a>
     </div>
         <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 px-4 md:px-6 overflow-hidden">
         <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
             <div data-aos="fade-right">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-bold mb-8 tracking-widest uppercase animate-fade-in">
-                    <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/30 bg-accent/10 text-accent text-xs font-bold mb-8 tracking-widest uppercase">
                     Лидер поставок 2026
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-display font-black text-white leading-[1.1] mb-6">
+                <h1 class="text-4xl md:text-6xl font-display font-black text-white leading-[1.1] mb-6">
                     Корпоративные <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-500 drop-shadow-[0_0_15px_rgba(249,115,22,0.5)]">Поставки</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-yellow-500">Поставки</span>
                     Материалов
                 </h1>
                 
-                <p class="text-lg text-slate-400 mb-10 max-w-lg leading-relaxed border-l-2 border-accent/30 pl-4">
-                    Официальный дилер заводов. Полная комплектация объектов под ключ. SEO-оптимизированный каталог с видео-обзорами продукции.
+                <p class="text-lg text-slate-300 mb-10 max-w-lg leading-relaxed pl-1">
+                    Официальный дилер заводов. Полная комплектация объектов под ключ. SEO-оптимизированный каталог.
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#catalog" class="group bg-accent text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-orange-600 transition shadow-[0_0_30px_rgba(249,115,22,0.3)] hover:shadow-[0_0_50px_rgba(249,115,22,0.5)] flex items-center justify-center gap-2">
-                        Перейти в каталог <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
+                    <a href="#catalog" class="bg-accent text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-orange-600 transition shadow-lg flex items-center justify-center gap-2">
+                        Перейти в каталог
                     </a>
                     <a href="#contacts" class="glass text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-white/10 transition flex items-center justify-center gap-2">
-                        <i class="far fa-file-alt"></i> Запросить прайс
+                        Запросить прайс
                     </a>
                 </div>
             </div>
 
             <div class="relative hidden md:block" data-aos="fade-left">
-                <div class="glass p-4 rounded-2xl border border-white/10 relative z-20 transform rotate-[-3deg] hover:rotate-0 transition duration-500">
-                    <div class="bg-black/50 rounded-lg h-48 flex items-center justify-center relative group cursor-pointer overflow-hidden">
-                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1628135800473-b3c07621c430?q=80&w=500')] bg-cover bg-center opacity-60"></div>
-                        <div class="w-16 h-16 bg-accent/90 rounded-full flex items-center justify-center text-white text-2xl shadow-lg z-10 group-hover:scale-110 transition">
-                            <i class="fas fa-play"></i>
+                <div class="glass p-4 rounded-2xl border border-white/10 relative z-20 transform rotate-[-2deg] hover:rotate-0 transition duration-500">
+                    <div class="bg-black/50 rounded-lg h-56 flex items-center justify-center relative overflow-hidden">
+                        <div class="text-slate-500 font-bold tracking-widest">VIDEO PREVIEW</div>
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white text-2xl shadow-lg z-10 absolute">
+                            <i class="fas fa-play ml-1"></i>
                         </div>
-                        <div class="absolute bottom-4 left-4 text-white font-bold text-sm">Видео-обзор продукции</div>
                     </div>
                     <div class="mt-4 flex justify-between items-center">
-                        <div class="text-white font-bold">Утеплитель PRO</div>
-                        <div class="text-accent font-bold">В наличии</div>
+                        <div class="text-white font-bold">Видео-обзор продукции</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="product-demo" class="py-24 bg-dark/50 relative border-y border-white/5">
+    <section id="product-demo" class="py-24 bg-primary/30 relative border-y border-white/5">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="text-center mb-16">
-                <span class="text-accent font-bold tracking-widest uppercase text-sm">Функционал</span>
-                <h2 class="text-3xl md:text-5xl font-display font-black text-white mt-2">Детальная страница товара</h2>
-                <p class="text-slate-400 mt-4">Именно так мы представим вашу продукцию: с видео и характеристиками.</p>
+            <div class="text-center mb-12">
+                <span class="text-accent font-bold tracking-widest uppercase text-sm">Пример карточки</span>
+                <h2 class="text-3xl font-display font-black text-white mt-2">Детальный обзор товара</h2>
             </div>
 
-            <div class="glass p-6 md:p-10 rounded-3xl border border-white/10 grid lg:grid-cols-2 gap-12">
+            <div class="glass p-6 md:p-8 rounded-3xl border border-white/10 grid lg:grid-cols-2 gap-10">
                 <div class="space-y-4">
-                    <div class="relative h-80 rounded-2xl overflow-hidden group border border-white/10">
-                        <div class="absolute inset-0 bg-black/60 flex items-center justify-center z-10 cursor-pointer group-hover:bg-black/40 transition">
-                            <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center text-white pl-1 text-3xl shadow-[0_0_30px_rgba(249,115,22,0.6)] animate-pulse">
-                                <i class="fas fa-play"></i>
+                    <div class="relative h-72 rounded-2xl overflow-hidden bg-black/40 border border-white/10 flex items-center justify-center group">
+                        <div class="text-slate-500 font-bold">MAIN PHOTO / VIDEO</div>
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition cursor-pointer">
+                            <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center text-white text-2xl">
+                                <i class="fas fa-play ml-1"></i>
                             </div>
                         </div>
-                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=800" class="w-full h-full object-cover">
-                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">YouTube Обзор</div>
-                    </div>
-                    <div class="grid grid-cols-4 gap-2">
-                        <div class="h-20 bg-white/5 rounded-lg border border-accent/50 cursor-pointer"></div>
-                        <div class="h-20 bg-white/5 rounded-lg border border-white/10 cursor-pointer hover:border-accent/30 transition"></div>
-                        <div class="h-20 bg-white/5 rounded-lg border border-white/10 cursor-pointer hover:border-accent/30 transition"></div>
-                        <div class="h-20 bg-white/5 rounded-lg border border-white/10 cursor-pointer hover:border-accent/30 transition"></div>
+                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">YouTube</div>
                     </div>
                 </div>
 
                 <div>
-                    <h3 class="text-3xl font-bold text-white mb-2">Металлочерепица SuperMontery</h3>
+                    <h3 class="text-2xl font-bold text-white mb-2">Металлочерепица Premium</h3>
                     <div class="flex items-center gap-4 mb-6">
                         <span class="text-green-400 text-sm font-bold"><i class="fas fa-check-circle"></i> В наличии</span>
-                        <span class="text-slate-500 text-sm">Артикул: 402-B</span>
+                        <span class="text-slate-400 text-sm">Арт: 402-B</span>
                     </div>
 
-                    <div class="flex gap-6 border-b border-white/10 mb-6">
-                        <button class="text-accent border-b-2 border-accent pb-2 font-bold">Описание</button>
-                        <button class="text-slate-400 hover:text-white pb-2 transition">Характеристики</button>
-                        <button class="text-slate-400 hover:text-white pb-2 transition">Доставка</button>
+                    <div class="flex gap-6 border-b border-white/10 mb-6 text-sm md:text-base">
+                        <button onclick="switchTab('desc')" id="btn-desc" class="tab-button tab-active pb-2 font-bold transition text-white">Описание</button>
+                        <button onclick="switchTab('specs')" id="btn-specs" class="tab-button text-slate-400 hover:text-white pb-2 transition">Характеристики</button>
+                        <button onclick="switchTab('deliv')" id="btn-deliv" class="tab-button text-slate-400 hover:text-white pb-2 transition">Доставка</button>
                     </div>
 
-                    <div class="text-slate-400 text-sm leading-relaxed mb-6">
-                        <p class="mb-4">Высококачественная кровля с полимерным покрытием. Идеально подходит для климата Казахстана. Гарантия от сквозной коррозии 20 лет.</p>
-                        
-                        <div class="grid grid-cols-2 gap-y-2 gap-x-4">
-                            <div class="text-slate-500">Толщина стали:</div>
-                            <div class="text-white">0.45 мм</div>
-                            <div class="text-slate-500">Покрытие:</div>
-                            <div class="text-white">Полиэстер</div>
-                            <div class="text-slate-500">Производитель:</div>
-                            <div class="text-white">Россия / Казахстан</div>
+                    <div id="tab-content" class="min-h-[120px]">
+                        <div id="desc" class="tab-pane fade-in">
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Высококачественная кровля с полимерным покрытием. Идеально подходит для климата Казахстана. Гарантия от сквозной коррозии 20 лет. Не выцветает на солнце.
+                            </p>
+                        </div>
+                        <div id="specs" class="tab-pane hidden fade-in">
+                             <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
+                                <div class="text-slate-500">Толщина стали:</div>
+                                <div class="text-white">0.45 мм</div>
+                                <div class="text-slate-500">Покрытие:</div>
+                                <div class="text-white">Полиэстер</div>
+                                <div class="text-slate-500">Страна:</div>
+                                <div class="text-white">Казахстан</div>
+                            </div>
+                        </div>
+                        <div id="deliv" class="tab-pane hidden fade-in">
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                • Самовывоз со склада в Алматы (бесплатно)<br>
+                                • Доставка газелью по городу (от 5000 тг)<br>
+                                • Отправка фурами по РК (расчет индивидуально)
+                            </p>
                         </div>
                     </div>
 
                     <div class="flex gap-4 mt-8">
-                        <button class="flex-1 bg-accent hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg transition transform active:scale-95">
-                            Заказать расчет
+                        <button class="flex-1 bg-accent hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition active:scale-95">
+                            Рассчитать
                         </button>
-                        <button class="px-6 py-4 border border-white/20 rounded-xl text-white hover:bg-white/5 transition">
+                        <button class="px-5 py-3 border border-white/20 rounded-xl text-white hover:bg-white/5 transition">
                             <i class="fab fa-whatsapp text-xl"></i>
                         </button>
                     </div>
@@ -258,137 +237,153 @@
     </section>
         <section id="catalog" class="py-24 relative z-10">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
-                <div>
-                    <h2 class="text-3xl md:text-5xl font-display font-black text-white mb-2">Наши Продукты</h2>
-                    <p class="text-slate-400">Выберите категорию для просмотра характеристик</p>
-                </div>
-            </div>
+            <h2 class="text-3xl md:text-4xl font-display font-black text-white mb-8">Каталог</h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="#product-demo" class="glass p-5 rounded-2xl hover-glow transition group relative overflow-hidden" data-aos="fade-up" data-aos-delay="0">
+                <a href="#product-demo" class="glass p-4 rounded-2xl hover:border-accent/50 transition group relative overflow-hidden block">
                     <div class="absolute top-3 right-3 z-20 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded flex items-center gap-1">
                         <i class="fas fa-play text-accent"></i> Видео
                     </div>
-                    <div class="h-48 bg-black/50 rounded-xl mb-4 relative overflow-hidden border border-white/5">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 font-bold tracking-widest group-hover:text-white transition z-10">ИЗОЛЯЦИЯ</div>
-                        <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="h-40 bg-black/40 rounded-xl mb-4 relative flex items-center justify-center border border-white/5">
+                        <span class="text-slate-500 font-bold tracking-widest group-hover:text-white transition">ИЗОЛЯЦИЯ</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-accent transition">Теплоизоляция</h3>
-                    <p class="text-xs text-slate-400">Минвата, Пеноплекс. Полное описание и видео-инструкции по монтажу.</p>
+                    <p class="text-xs text-slate-400">Минвата, Пеноплекс. Видео-обзоры.</p>
                 </a>
 
-                <a href="#product-demo" class="glass p-5 rounded-2xl hover-glow transition group relative" data-aos="fade-up" data-aos-delay="100">
+                <a href="#product-demo" class="glass p-4 rounded-2xl hover:border-accent/50 transition group relative block">
                     <div class="absolute top-3 right-3 z-20 bg-black/60 backdrop-blur text-white text-[10px] px-2 py-1 rounded flex items-center gap-1">
                         <i class="fas fa-play text-accent"></i> Видео
                     </div>
-                    <div class="h-48 bg-black/50 rounded-xl mb-4 relative overflow-hidden border border-white/5">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 font-bold tracking-widest group-hover:text-white transition z-10">КРОВЛЯ</div>
-                        <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    <div class="h-40 bg-black/40 rounded-xl mb-4 relative flex items-center justify-center border border-white/5">
+                         <span class="text-slate-500 font-bold tracking-widest group-hover:text-white transition">КРОВЛЯ</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-accent transition">Кровля</h3>
-                    <p class="text-xs text-slate-400">Черепица, Профнастил. Характеристики и сертификаты в карточке.</p>
+                    <p class="text-xs text-slate-400">Черепица, Профнастил.</p>
                 </a>
 
-                <a href="#product-demo" class="glass p-5 rounded-2xl hover-glow transition group relative" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 bg-black/50 rounded-xl mb-4 relative overflow-hidden border border-white/5">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 font-bold tracking-widest group-hover:text-white transition z-10">ФАСАДЫ</div>
-                        <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <a href="#product-demo" class="glass p-4 rounded-2xl hover:border-accent/50 transition group relative block">
+                    <div class="h-40 bg-black/40 rounded-xl mb-4 relative flex items-center justify-center border border-white/5">
+                         <span class="text-slate-500 font-bold tracking-widest group-hover:text-white transition">ФАСАДЫ</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-accent transition">Фасады</h3>
-                    <p class="text-xs text-slate-400">Сайдинг, Панели. Фото готовых объектов внутри.</p>
+                    <p class="text-xs text-slate-400">Сайдинг, Панели.</p>
                 </a>
 
-                <a href="#product-demo" class="glass p-5 rounded-2xl hover-glow transition group relative" data-aos="fade-up" data-aos-delay="300">
-                    <div class="h-48 bg-black/50 rounded-xl mb-4 relative overflow-hidden border border-white/5">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 font-bold tracking-widest group-hover:text-white transition z-10">СМЕСИ</div>
-                        <div class="absolute inset-0 bg-accent/20 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <a href="#product-demo" class="glass p-4 rounded-2xl hover:border-accent/50 transition group relative block">
+                    <div class="h-40 bg-black/40 rounded-xl mb-4 relative flex items-center justify-center border border-white/5">
+                         <span class="text-slate-500 font-bold tracking-widest group-hover:text-white transition">СМЕСИ</span>
                     </div>
                     <h3 class="font-bold text-lg text-white mb-1 group-hover:text-accent transition">Сухие смеси</h3>
-                    <p class="text-xs text-slate-400">Цемент, Штукатурка. Оптовые цены и условия доставки.</p>
+                    <p class="text-xs text-slate-400">Цемент, Штукатурка.</p>
                 </a>
             </div>
 
-            <div class="mt-20 pt-10 border-t border-white/5 text-slate-600 text-xs leading-relaxed opacity-60">
-                <h4 class="text-slate-500 font-bold mb-2">Оптовые поставки стройматериалов в Казахстане</h4>
-                <p>BGTRADE предлагает широкий ассортимент строительных материалов с доставкой по Алматы и РК. В нашем каталоге вы найдете теплоизоляцию, кровельные материалы, фасадные системы и сухие строительные смеси. Мы работаем напрямую с заводами-производителями, что гарантирует низкие цены и высокое качество продукции. Каждый товар в каталоге сопровождается подробным описанием, техническими характеристиками и видео-обзором, чтобы вы могли сделать правильный выбор.</p>
+            <div class="mt-20 pt-10 border-t border-white/10 text-slate-300 text-xs leading-relaxed opacity-80">
+                <h4 class="text-white font-bold mb-2">Оптовые поставки стройматериалов в Казахстане</h4>
+                <p>BGTRADE предлагает широкий ассортимент строительных материалов с доставкой по Алматы и РК. В нашем каталоге вы найдете теплоизоляцию, кровельные материалы, фасадные системы и сухие строительные смеси. Мы работаем напрямую с заводами-производителями, что гарантирует низкие цены и высокое качество продукции. Каждый товар в каталоге сопровождается подробным описанием, техническими характеристиками и видео-обзором.</p>
             </div>
         </div>
         </section>
-            <footer class="border-t border-white/5 bg-dark pt-16 pb-8 relative z-10">
+            <section id="about" class="py-20 relative z-10">
         <div class="container mx-auto px-4 md:px-6">
-            <div class="grid md:grid-cols-4 gap-8 mb-12">
-                
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass p-6 rounded-2xl text-center">
+                    <i class="fas fa-truck text-3xl text-accent mb-4"></i>
+                    <h3 class="text-white font-bold mb-2">Своя логистика</h3>
+                    <p class="text-sm text-slate-400">Доставка в срок</p>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center">
+                    <i class="fas fa-tags text-3xl text-accent mb-4"></i>
+                    <h3 class="text-white font-bold mb-2">Оптовые цены</h3>
+                    <p class="text-sm text-slate-400">Без посредников</p>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center">
+                    <i class="fas fa-file-contract text-3xl text-accent mb-4"></i>
+                    <h3 class="text-white font-bold mb-2">Документы</h3>
+                    <p class="text-sm text-slate-400">НДС, Сертификаты</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="py-20 bg-accent/5 relative">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="bg-dark border border-white/10 rounded-3xl p-6 md:p-12 max-w-4xl mx-auto shadow-2xl">
+                <h2 class="text-3xl font-display font-black text-white mb-6 text-center">Получить консультацию</h2>
+                <form class="space-y-4 max-w-md mx-auto">
+                    <input type="text" placeholder="Ваше имя" class="w-full px-5 py-3 rounded-xl bg-primary border border-white/10 text-white focus:border-accent outline-none">
+                    <input type="tel" placeholder="+7 (___) ___-__-__" class="w-full px-5 py-3 rounded-xl bg-primary border border-white/10 text-white focus:border-accent outline-none">
+                    <button class="w-full bg-accent text-white font-bold py-4 rounded-xl hover:bg-orange-600 transition">
+                        Отправить заявку
+                    </button>
+                    <p class="text-xs text-center text-slate-500">Ваши данные в безопасности</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/5 bg-dark pt-12 pb-8 relative z-10">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
                 <div>
-                    <a href="#" class="flex items-center gap-2 mb-6 text-white font-display font-black text-xl">
+                    <a href="#" class="inline-flex items-center gap-2 mb-4 text-white font-display font-black text-xl">
                         <i class="fas fa-cube text-accent"></i> BGTRADE
                     </a>
-                    <p class="text-sm text-slate-500 leading-relaxed mb-6">
-                        Комплексные поставки строительных материалов. Качество, проверенное крупнейшими застройщиками страны.
+                    <p class="text-sm text-slate-500">
+                        Комплексные поставки материалов.
                     </p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 hover:bg-accent hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 hover:bg-green-500 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
-                    </div>
                 </div>
-
                 <div>
-                    <h4 class="font-bold text-white mb-6 uppercase text-sm tracking-wider">Каталог</h4>
-                    <ul class="space-y-3 text-sm text-slate-400">
-                        <li><a href="#" class="hover:text-accent transition">Теплоизоляция</a></li>
-                        <li><a href="#" class="hover:text-accent transition">Кровельные системы</a></li>
-                        <li><a href="#" class="hover:text-accent transition">Фасадные материалы</a></li>
-                        <li><a href="#" class="hover:text-accent transition">Строительные смеси</a></li>
+                    <h4 class="font-bold text-white mb-4">Навигация</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#catalog" class="hover:text-accent">Каталог</a></li>
+                        <li><a href="#product-demo" class="hover:text-accent">Продукция</a></li>
+                        <li><a href="#contacts" class="hover:text-accent">Контакты</a></li>
                     </ul>
                 </div>
-
                 <div>
-                    <h4 class="font-bold text-white mb-6 uppercase text-sm tracking-wider">Компания</h4>
-                    <ul class="space-y-3 text-sm text-slate-400">
-                        <li><a href="#about" class="hover:text-accent transition">О нас</a></li>
-                        <li><a href="#" class="hover:text-accent transition">Доставка и Оплата</a></li>
-                        <li><a href="#" class="hover:text-accent transition">Сертификаты</a></li>
-                        <li><a href="#contacts" class="hover:text-accent transition">Контакты</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-white mb-6 uppercase text-sm tracking-wider">Контакты</h4>
-                    <ul class="space-y-4 text-sm text-slate-400">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-map-marker-alt mt-1 text-accent"></i>
-                            <span>Алматы, ул. Строительная 12, БЦ "Capital", офис 304</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-phone-alt mt-1 text-accent"></i>
-                            <span class="text-white font-bold">+7 (707) 123-45-67</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-envelope mt-1 text-accent"></i>
-                            <span>info@bgtrade.kz</span>
-                        </li>
+                    <h4 class="font-bold text-white mb-4">Контакты</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>Алматы, ул. Строительная 12</li>
+                        <li>+7 (707) 123-45-67</li>
+                        <li>info@bgtrade.kz</li>
                     </ul>
                 </div>
             </div>
-
-            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-600">
-                <p>&copy; 2026 BGTRADE. Все права защищены.</p>
-                
-                <a href="https://anukenn.vercel.app/" target="_blank" class="group flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full hover:bg-white/10 transition border border-white/5 hover:border-accent/30">
-                    <span class="opacity-70 group-hover:opacity-100 transition">Разработчик сайта —</span>
-                    <span class="font-bold text-white group-hover:text-accent transition flex items-center gap-1">
-                        Anuken <i class="fas fa-external-link-alt text-[10px]"></i>
-                    </span>
-                </a>
+            <div class="border-t border-white/5 pt-6 text-center text-xs text-slate-600">
+                &copy; 2026 BGTRADE. Все права защищены.
             </div>
         </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ once: true, duration: 800, offset: 50 });
+        AOS.init({ once: true, duration: 800 });
 
-        // Гамбургер
+        // ЛОГИКА ТАБОВ (РАБОЧАЯ)
+        function switchTab(tabName) {
+            // 1. Скрываем все блоки контента
+            document.getElementById('desc').classList.add('hidden');
+            document.getElementById('specs').classList.add('hidden');
+            document.getElementById('deliv').classList.add('hidden');
+            
+            // 2. Убираем активный класс у кнопок
+            document.getElementById('btn-desc').classList.remove('tab-active', 'text-white');
+            document.getElementById('btn-specs').classList.remove('tab-active', 'text-white');
+            document.getElementById('btn-deliv').classList.remove('tab-active', 'text-white');
+            
+            document.getElementById('btn-desc').classList.add('text-slate-400');
+            document.getElementById('btn-specs').classList.add('text-slate-400');
+            document.getElementById('btn-deliv').classList.add('text-slate-400');
+
+            // 3. Показываем нужный блок и красим кнопку
+            document.getElementById(tabName).classList.remove('hidden');
+            document.getElementById('btn-' + tabName).classList.add('tab-active', 'text-white');
+            document.getElementById('btn-' + tabName).classList.remove('text-slate-400');
+        }
+
+        // Гамбургер меню
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -408,7 +403,6 @@
                 }
             });
         }
-
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('menu-visible');
